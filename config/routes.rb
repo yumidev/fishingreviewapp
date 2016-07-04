@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
 
   root 'regions#home'
-  resources :locations
   get 'session/new'
   resources :reviews
   resources :regions do
     resources :spots
   end
   resources :users
-
+  get 'session/new'
   get "/login" => 'session#new', :as => 'login'
   post "/login" => 'session#create'
   delete "/logout" => 'session#destroy', :as => 'logout'

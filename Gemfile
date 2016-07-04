@@ -29,10 +29,11 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'carrierwave'
 gem 'geocoder'
 gem 'gmaps4rails'
+gem 'bootstrap-generators'
 gem 'cloudinary'
 
 group :production do
-  gem 'rails_12factor'
+gem 'rails_12factor'
 end
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -53,6 +54,4 @@ group :development do
   gem 'spring'
   gem 'pry-rails'
   gem 'annotate'
-  gem 'bootstrap-generators'
-
 end

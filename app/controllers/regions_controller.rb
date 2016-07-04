@@ -2,7 +2,9 @@ class RegionsController < ApplicationController
 
 def index
   @regions = Region.order(:id)
-
+end
+def home
+  @regions = Region.all
 end
 
 def show
@@ -14,13 +16,18 @@ def show
   @reviews.each do |r|
     rating_sum += r.rating
   end
-  @rating_avg = rating_sum/@reviews.length
+  if @reviews.length != 0
+    @rating_avg = (rating_sum/@reviews.length).round(1)
+  else
+    @msg = "Be the first rater"
+  end
 
   @review = Review.new
 
   @hash = Gmaps4rails.build_markers(@spots) do |spot, marker|
     marker.lat spot.lat
     marker.lng spot.lng
+    marker.infowindow spot.name
   end
 end
 
