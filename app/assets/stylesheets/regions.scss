@@ -10,3 +10,24 @@ h1 {
 .homepage {
   text-align: center;
 }
+
+
+.map_weather {
+  display: flex;
+
+}
+
+#map {
+  min-width: 300px;
+  width: 40vw;
+  height: 300px;
+  margin: auto;
+}
+#weather {
+  min-width: 300px;
+  margin: 30px;
+}
+
+.weathercontent {
+  margin-left: 50px;
+}

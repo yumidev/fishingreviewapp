@@ -46,7 +46,7 @@
             <li class="<%= 'active' if current_page?(logout_path) %>"><%= link_to "Log out", logout_path, :method => :delete %></li>
           <% else %>
             <li class="<%= 'active' if current_page?(new_user_path) %>"><%= link_to "Sign up", new_user_path %></li>
-            <li class="<%= 'active' if current_page?(login_path) %>"><%= link_to "Log in", login_path %></li>
+            <li class="<%= 'active' if current_page?(login) %>"><%= link_to "Log in", login_path %></li>
           <% end %>
         </ul>
       </div>
@@ -62,5 +62,12 @@
 
     <%= yield %>
   </div>
+  <script>
+    $(".nav li").on("click",function () {
+      $(".active").removeClass("active")
+      this.className="active"
+    })
+  </script>
+
 </body>
 </html>

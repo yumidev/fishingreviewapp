@@ -1,9 +1,10 @@
 <div class="homepage">
   <h1>Welcome to Fishing Review App</h1>
-  <% @regions.each do |region| %>
-    <% region.reviews.each do |review| %>
-      <a href="/regions/<%= region.id %>"><img src="<%= review.link %>" alt="" class="home-image" />
-  </a>
-    <% end %>
+  <h3>Recently Caught</h3>
+
+
+  <% @reviews.each do |review| %>
+      <a href="/regions/<%= review.region_id %>"><img src="<%= review.link %>" alt="" class="home-image" /></a>
+      <p><%= review.region.name %></p>
   <% end %>
 </div>

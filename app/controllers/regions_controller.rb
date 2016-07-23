@@ -5,13 +5,14 @@ def index
 end
 def home
   @regions = Region.all
+  @reviews = Review.all.order(:created_at => :desc)
 end
 
 def show
   @region = Region.find params[:id]
 
   @spots = @region.spots.order(:id)
-  @reviews = @region.reviews.order(:id)
+  @reviews = @region.reviews.order(:id => :desc)
   rating_sum = 0
   @reviews.each do |r|
     rating_sum += r.rating
