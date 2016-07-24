@@ -14,9 +14,11 @@ end
 
 def create
   # region = Region.find_by :id => params[:review][:region_id]
-  cloudinary = Cloudinary::Uploader.upload( params[:file] )
+  if params[:file]
+    cloudinary = Cloudinary::Uploader.upload( params[:file] )
+    @review.link = cloudinary["url"]
+  end
   @review = Review.new review_params
-  @review.link = cloudinary["url"]
   @review.save!
 
   redirect_to region_path(@review.region)
@@ -29,8 +31,10 @@ end
 def update
   # region = Region.find_by :id => params[:review][:region_id]
   review = Review.find params[:id]
-  cloudinary = Cloudinary::Uploader.upload( params[:file] )
-  review.link = cloudinary["url"]
+  if params[:file]
+    cloudinary = Cloudinary::Uploader.upload( params[:file] )
+    review.link = cloudinary["url"]
+  end
   review.update review_params
 
   redirect_to "/regions/#{review.region_id}"
