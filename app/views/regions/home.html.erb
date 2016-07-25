@@ -4,7 +4,9 @@
 
 
   <% @reviews.each do |review| %>
+    <% if review.link %>
       <a href="/regions/<%= review.region_id %>"><img src="<%= review.link %>" alt="" class="home-image" /></a>
       <p><%= review.region.name %></p>
+    <% end %>
   <% end %>
 </div>
